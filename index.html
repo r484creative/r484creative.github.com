@@ -98,13 +98,18 @@
             // $(".donetext").fadeIn('300').fadeOut('300');
 		 	$("#outputbox").zclip({
                 path: 'ZeroClipboard.swf',
-                copy: $('#outputbox').text(),
+                copy: $('#outputbox').val(),
                 afterCopy: function(){
-                    alert($('#outputbox').text())
+                    alert($('#outputbox').val())
                 }
             });
 
- 		});
+ 		}).bind('mouseover', function() {
+            $("#inputbox").focus().select();
+        });
+        $("#outputbox").bind('mouseover', function() {
+            $("#outputbox").focus().select();
+        });
 
     </script>
 </body>
