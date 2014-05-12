@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>121 Member Infomation Extracter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Le styles -->
+        <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+              }
+            .donetext {
+                display: none;
+            }
+        </style>
+        <link href="bootstrap-responsive.min.css"
+        rel="stylesheet">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="../assets/js/html5shiv.js"></script>
+        <![endif]-->
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link href='main.css' rel='stylesheet'>
+</head>
+    
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar collapsed" data-toggle="collapse"
+                    data-target=".nav-collapse"> <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="ih1">121 Member Infomation Extracter</h1>
+                    <!--div class="nav-collapse collapse" style="height: 0px;">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about">About</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div-->
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+        <p></p>
+            <p id="donetxt" class="donetext">Done. All Ready Copied to Clipboard.
+                <br>
+            </p>
+                <textarea rows="10" style="width:100%" cols="300" id="inputbox"></textarea>
+                <textarea rows="1" style="width:100%" id="outputbox"></textarea>
+                <!-- <button id="igo" class="btn btn-primary pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <div id="result"></div> -->
+        </div>
+        <!-- /container -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="jquery-1.10.1.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script type="text/javascript" src="jquery.zclip.min.js"></script>
+    <script type="text/javascript">
+    
+    	$('#inputbox').bind('input propertychange', function() {
+
+	 		var inputbox = $("#inputbox").val();
+
+	 		var outputbox = $("#outputbox").val();
+            inputbox.match("POS Journal Log :(.*) -");
+            var SellDay = RegExp.$1;
+            SellDay = SellDay.replace(/(\d\d\d\d)(\d\d)(\d\d)/, "$1-$2-$3");
+	 		inputbox.match("电子邮件: :\t[\[](.*)]");
+	 		var mail = RegExp.$1;
+            inputbox.match("姓氏 : [\[](.*)]");
+            var LastName = RegExp.$1;
+            inputbox.match("名字 : [\[](.*)]"); 
+	 		var FirstName = RegExp.$1;
+	 		inputbox.match("销售店员: [\[](.*)]");
+	 		var Owner = RegExp.$1;
+	 		inputbox.match("会员帐号: (.*)");
+	 		var MemberID = RegExp.$1;
+	 		$("#outputbox").val(SellDay + "\t" + Owner + "\t" + MemberID + "\t" + LastName + FirstName + "\t" + mail).focus().select();
+            // $(".donetext").fadeIn('300').fadeOut('300');
+		 	$("#outputbox").zclip({
+                path: 'ZeroClipboard.swf',
+                copy: $('#outputbox').text(),
+                afterCopy: function(){
+                    alert($('#outputbox').text())
+                }
+            });
+
+ 		});
+
+    </script>
+</body>
+</html>

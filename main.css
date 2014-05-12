@@ -1,0 +1,11 @@
+/* add style here */
+.container-fluid {
+	width: 900px;
+	margin: auto;
+}
+.table th, .table td {
+    text-align: center;
+}
+.ih1{
+	color: white;
+}
