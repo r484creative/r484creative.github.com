@@ -92,9 +92,15 @@
 	 		var FirstName = RegExp.$1;
 	 		inputbox.match("销售店员: [\[](.*)]");
 	 		var Owner = RegExp.$1;
-	 		inputbox.match("会员帐号: (.*)");
+	 		inputbox.match("序列号: (.*)");
 	 		var MemberID = RegExp.$1;
-	 		$("#outputbox").val(SellDay + "\t" + Owner + "\t" + MemberID + "\t" + LastName + FirstName + "\t" + mail).focus().select();
+	 		inputbox.match("支付总额 (.*)");
+	 		var Total = RegExp.$1;
+	 		if(Total=="498.00")
+	 			Total = 1
+	 		else
+	 			Total = ""
+	 		$("#outputbox").val(SellDay + "\t" + Owner + "\t" + MemberID + "\t" + LastName + FirstName + "\t" + mail + Total).focus().select();
             // $(".donetext").fadeIn('300').fadeOut('300');
 		 	$("#outputbox").zclip({
                 path: 'ZeroClipboard.swf',
