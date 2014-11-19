@@ -92,7 +92,7 @@
 	 		var FirstName = RegExp.$1;
 	 		inputbox.match("销售店员: [\[](.*)]");
 	 		var Owner = RegExp.$1;
-	 		inputbox.match("^序列号: (.*)");
+	 		inputbox.match("^序列号: (\d+)");
 	 		var MemberID = RegExp.$1;
 	 		inputbox.match("支付总额 (.*)");
 	 		var Total = RegExp.$1;
@@ -100,7 +100,7 @@
 	 			Total = 1
 	 		else
 	 			Total = ""
-	 		$("#outputbox").val(SellDay + "\t" + Owner + "\t" + MemberID + "\t" + LastName + FirstName + "\t" + mail + Total).focus().select();
+	 		$("#outputbox").val(SellDay + "\t" + Owner + "\t" + MemberID + "\t" + LastName + FirstName + "\t" + mail + "\t" + Total).focus().select();
             // $(".donetext").fadeIn('300').fadeOut('300');
 		 	$("#outputbox").zclip({
                 path: 'ZeroClipboard.swf',
